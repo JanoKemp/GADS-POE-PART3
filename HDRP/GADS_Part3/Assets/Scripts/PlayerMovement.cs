@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 movement;
     bool isGrounded = false;
     bool isJumping = false;
-
+    public AudioSource walking;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,17 @@ public class PlayerMovement : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            if(!walking.isPlaying)
+            {
+                walking.Play();
+            }
+        }
+        else
+        {
+            walking.Stop();
+        }
         // Calculate movement direction based on input
          movement = new Vector3(horizontal, 0f, vertical) * speed * Time.deltaTime;
 
