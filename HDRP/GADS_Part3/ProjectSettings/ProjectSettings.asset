@@ -844,8 +844,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: GADS_Part3
-  metroPackageVersion: 
+  metroPackageName: GADSPart3
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -853,7 +853,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: GADS_Part3
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: GADS_Part3
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
