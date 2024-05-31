@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class JumpSound : MonoBehaviour
 {
@@ -14,9 +16,9 @@ public class JumpSound : MonoBehaviour
     public List<Canvas> canvases; 
     public float canvasDisplayTime = 3f; 
 
-    private Queue<Canvas> canvasQueue; 
-    
+    private Queue<Canvas> canvasQueue;
 
+    public GameObject SettingsMenu;
     private void Awake()
     {
         // Hide all canvases initially
@@ -34,6 +36,27 @@ public class JumpSound : MonoBehaviour
 
         // Initialize the canvas queue
         canvasQueue = new Queue<Canvas>(canvases);
+    }
+
+    public void Update()
+    {
+        //when escape is pressed menu will open
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            SettingsMenu.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        
+    }
+
+    public void backButton()
+    {
+        Time.timeScale = 1;
+        SettingsMenu.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,9 +82,12 @@ public class JumpSound : MonoBehaviour
 
         if (other.CompareTag("End"))
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
+    
 
     private IEnumerator MoveDoors()
     {
